@@ -92,3 +92,8 @@ body {
 }
 
 /* gradiant button end*/
+
+select option {
+  background-color: white;
+  color: black;
+}

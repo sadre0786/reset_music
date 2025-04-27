@@ -50,7 +50,7 @@ const Login = () => {
           </div>
           <a
             href="#"
-            className="hover:text-blue-800 text-right w-full mt-1 text-base sm:text-xl"
+            className="hover:text-blue-800 ml-auto mt-1 text-base sm:text-xl"
           >
             Forgot Password?
           </a>
@@ -98,6 +98,12 @@ const Login = () => {
             </a>
           </div>
         </form>
+        <p className="mt-4">
+          Don't have an account?{" "}
+          <a href="#" className="text-blue-800 underline">
+            Create Account
+          </a>
+        </p>
       </div>
     </section>
   );
