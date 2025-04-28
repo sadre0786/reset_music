@@ -97,3 +97,32 @@ select option {
   background-color: white;
   color: black;
 }
+
+
+/* subscription card  */
+.subscription-wrapper {
+  display: inline-block;
+  padding: 1px;
+  border-radius: 10px;
+  background: linear-gradient(
+    131.43deg,
+    #ffffff7f 10.34%,
+    #eaeaea6d 20.21%,
+    #88b1ef00 72.19%,
+    #033baa00 94.16%
+  );
+}
+
+.subscription-card {
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #020216 10.34%, #0d1b3f 70%);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 400;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* subscription card  end*/

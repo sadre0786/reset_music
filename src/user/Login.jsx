@@ -4,14 +4,14 @@ import { TbLockPassword } from "react-icons/tb";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { assets } from "../assets/assets";
 import { useState } from "react";
+import IconHeader from "../components/IconHeader";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
     <section className="w-full min-h-screen bg-image flex flex-col items-center">
-      <img src={assets.reset_icon} className="w-10 py-3 block" alt="" />
-      <div className="gradiant-line"></div>
+      <IconHeader />
 
       <div className="text-white mt-auto mb-auto flex flex-col justify-around items-center">
         <h1 className="text-4xl mb-6">
