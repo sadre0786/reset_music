@@ -66,8 +66,8 @@ body {
 
 .button-wrapper {
   display: inline-block;
-  padding: 2px;
-  border-radius: 12px;
+  padding: 1px;
+  border-radius: 10px;
   background: linear-gradient(
     131.43deg,
     #ffffff 10.34%,
@@ -81,7 +81,7 @@ body {
   width: 15.3125rem;
   height: 3rem;
   border: none;
-  border-radius: 0.7rem;
+  border-radius: 10px;
   background: linear-gradient(131.43deg, #0a0a23 10.34%, #0d1b3f 70%);
   color: white;
   font-size: 1.2rem;
@@ -97,7 +97,6 @@ select option {
   background-color: white;
   color: black;
 }
-
 
 /* subscription card  */
 .subscription-wrapper {
@@ -126,3 +125,64 @@ select option {
 }
 
 /* subscription card  end*/
+
+/* SearchBar FavouriteGen */
+
+.searchbar-container {
+  position: relative;
+  border-radius: 12px;
+  border: none;
+}
+
+.searchbar-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 1.5px; /* This acts as the border width */
+  background: linear-gradient(
+    123deg,
+    rgba(255, 255, 255, 0.8) -2%,
+    rgba(255, 255, 255, 0) 70%,
+    rgba(255, 255, 255, 0) 130%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.searchbar-button {
+  position: relative;
+  background: linear-gradient(to right, #1b233d22, #0941a49f 40%, #0c63ff);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px; /* Applies to all sides */
+  z-index: 1;
+  overflow: hidden; /* Ensures the pseudo-element respects border-radius */
+  box-shadow: inset 0px 1px 0.8px 0px rgba(255, 255, 255, 0.31),
+    0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.searchbar-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 1px;
+  background: linear-gradient(
+    131deg,
+    #ffffff 10%,
+    #88b2ef 20%,
+    #88b2ef 72%,
+    #033caa 94%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none; /* Allows clicks to pass through */
+  z-index: -1; /* Places the border behind the button content */
+}
+
+/* SearchBar FavouriteGen end*/
