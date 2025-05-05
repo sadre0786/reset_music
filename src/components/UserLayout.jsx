@@ -3,7 +3,7 @@ import UserSidebar from './UserSidebar'
 
 const UserLayout = ({children}) => {
   return (
-    <div className="h-screen bg-slate-600">
+    <div className="h-full bg-slate-600">
         <div className='flex'>
             <UserSidebar/>
             <div className='w-full  overflow-auto text-white'>

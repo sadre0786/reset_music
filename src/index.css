@@ -19,7 +19,7 @@ body {
   background: linear-gradient(
     90deg,
     #104ca54d 0%,
-    #459cca 46.88%,
+    #1e3bf4d9 46.88%,
     #01060849 100%
   );
 }
@@ -237,4 +237,84 @@ select option {
   text-align: center;
   cursor: pointer;
   transition: 0.3s;
+}
+.play-pause-button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(131.43deg, #0a0a23 10.34%, #0d1b3f 70%);
+  color: white;
+  font-weight: 400;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.play-pause-wrapper {
+  display: inline-block;
+  padding: 1px;
+  border-radius: 50%;
+  background: linear-gradient(
+    131.43deg,
+    #ffffff 10.34%,
+    #88b2ef 20.21%,
+    #88b2ef 72.19%,
+    #033caa 94.16%
+  );
+}
+
+.player-gradiant-line {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    #104ca54d 0%,
+    #4767dd97 46.88%,
+    #01060849 100%
+  );
+  filter: blur(1px);
+}
+
+input[type='range'].neon-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 2px;
+  border-radius: 4px;
+  outline: none;
+}
+
+/* Track */
+input[type='range'].neon-range::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 4px;
+  background: transparent;
+}
+
+/* Thumb */
+input[type='range'].neon-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: #007aff;
+  margin-top: -2px;
+  box-shadow:
+    0 0 6px rgba(0, 122, 255, 0.8),
+    0 0 12px rgba(0, 122, 255, 0.6),
+    0 0 18px rgba(0, 122, 255, 0.4);
+  cursor: pointer;
+}
+
+/* Firefox */
+input[type='range'].neon-range::-moz-range-thumb {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background: #007aff;
+  box-shadow:
+    0 0 6px rgba(0, 122, 255, 0.8),
+    0 0 12px rgba(0, 122, 255, 0.6),
+    0 0 18px rgba(0, 122, 255, 0.4);
+  cursor: pointer;
 }

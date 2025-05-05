@@ -16,7 +16,7 @@ const menuItems = [
 
 const UserSidebar = () => {
   return (
-    <aside className='w-80 min-h-screen bg-[#0E1525] rounded-tr-[50px] rounded-br-[50px]'>
+    <aside className='w-80 min-h-screen bg-[#0E1525] rounded-tr-[50px] rounded-br-[50px] pb-4'>
       <IconHeader />
 
       <div className="w-64 text-white p-4">
