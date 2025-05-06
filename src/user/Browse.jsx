@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import UserLayout from "../components/UserLayout";
 
 const Browse = () => {
   return (
-    <div>Browse</div>
-  )
-}
+    <UserLayout>
+      <div>Browse</div>
+    </UserLayout>
+  );
+};
 
-export default Browse
+export default Browse;
