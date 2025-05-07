@@ -1,17 +1,15 @@
-import React from 'react'
-import UserSidebar from './UserSidebar'
+import React from "react";
+import UserSidebar from "./UserSidebar";
 
-const UserLayout = ({children}) => {
+const UserLayout = ({ children }) => {
   return (
-    <div className="h-full bg-slate-600">
-        <div className='flex'>
-            <UserSidebar/>
-            <div className='w-full  overflow-auto text-white'>
-            {children}
-            </div>
-        </div>
+    <div className="h-full bg-black">
+      <div className="flex">
+        <UserSidebar />
+        <div className="w-full  overflow-auto text-white">{children}</div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default UserLayout
+export default UserLayout;
