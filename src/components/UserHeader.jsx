@@ -4,7 +4,7 @@ import { FiChevronDown } from "react-icons/fi";
 const UserHeader = () => {
   return (
     <div className="w-full flex justify-between items-centerS px-4 py-2">
-      <h1 className="text-3xl">
+      <h1 className="md:text-3xl text-2xl">
         good morning, <span className="text-blue-700">paul</span>
       </h1>
 

@@ -1,8 +1,5 @@
-// Player.jsx
-
 import React, { useState, useRef, useEffect } from "react";
 import ReactHowler from "react-howler";
-import PlayerImg from "../images/player.jpg";
 import { LuDna } from "react-icons/lu";
 import { CiHeart } from "react-icons/ci";
 import {
@@ -14,34 +11,7 @@ import {
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { IoIosMore } from "react-icons/io";
 import { FaPlay, FaPause } from "react-icons/fa";
-
-// Sample songs (no hardcoded duration anymore)
-const songs = [
-  {
-    title: "wound in flesh",
-    artist: "Ed Sheeran",
-    img: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f",
-    src: "https://res.cloudinary.com/dqlbaphus/video/upload/v1745150529/icqpas8u5xj2ioiewndc.mp3",
-  },
-  {
-    title: "alone in dark",
-    artist: "Hanin Dhiya",
-    img: "https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212",
-    src: "https://res.cloudinary.com/dqlbaphus/video/upload/v1745141932/soh0ftaatq3dqd5f8qqs.mp3",
-  },
-  {
-    title: "beñice",
-    artist: "Meghan Trainor",
-    img: "https://plus.unsplash.com/premium_photo-1680764500197-7de58b7974bd",
-    src: "https://res.cloudinary.com/dqlbaphus/video/upload/v1745150529/icqpas8u5xj2ioiewndc.mp3",
-  },
-  {
-    title: "benificence",
-    artist: "Jaymes Young",
-    img: "https://images.unsplash.com/photo-1571310100246-e0676f359b42",
-    src: "https://res.cloudinary.com/dqlbaphus/video/upload/v1745141932/soh0ftaatq3dqd5f8qqs.mp3",
-  },
-];
+import { SongData } from "../context/Song";
 
 // Helper to format time like 2:45
 const formatTime = (seconds) => {
@@ -51,8 +21,19 @@ const formatTime = (seconds) => {
 };
 
 const Player = () => {
+  const {
+    songs,
+    song,
+    selectedSong,
+    isPlaying,
+    setIsPlaying,
+    nextMusic,
+    prevMusic,
+    setSelectedSong,
+    fetchOneSong,
+  } = SongData();
+
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(0.5);
   const [open, setOpen] = useState(true);
   const [seek, setSeek] = useState(0);
@@ -62,12 +43,27 @@ const Player = () => {
 
   const playerRef = useRef(null);
 
-  const currentSong = songs[currentIndex];
   const trackStyle = {
     background: `linear-gradient(to right, #007aff ${
       volume * 100
     }%, #ffffff22 ${volume * 100}%)`,
   };
+
+  // Find current song based on selectedSong ID
+  const currentSong = songs.find((s) => s._id === selectedSong) || songs[0];
+
+  // Get next 4 songs (including current song if needed)
+  const nextSongs = songs.slice(currentIndex, currentIndex + 4);
+
+  // Find current index
+  useEffect(() => {
+    if (selectedSong && songs.length > 0) {
+      const index = songs.findIndex((s) => s._id === selectedSong);
+      if (index !== -1) {
+        setCurrentIndex(index);
+      }
+    }
+  }, [selectedSong, songs]);
 
   const handleTogglePlay = () => {
     setIsPlaying(!isPlaying);
@@ -85,12 +81,12 @@ const Player = () => {
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % songs.length);
+    nextMusic();
     setIsPlaying(true);
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + songs.length) % songs.length);
+    prevMusic();
     setIsPlaying(true);
   };
 
@@ -124,10 +120,21 @@ const Player = () => {
     return () => clearInterval(interval);
   }, [isPlaying]);
 
+  // Fetch song details when selectedSong changes
+  useEffect(() => {
+    if (selectedSong) {
+      fetchOneSong();
+    }
+  }, [selectedSong]);
+
+  if (!currentSong) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="player-wrapper shadow-[-10px_-10px_80px_rgba(0,153,255,0.4)] shadow-[#0e52ff3b]">
       <ReactHowler
-        src={currentSong.src}
+        src={currentSong?.audio?.url}
         playing={isPlaying}
         volume={volume}
         ref={playerRef}
@@ -138,14 +145,14 @@ const Player = () => {
       <div className="player-card w-[15.25rem] py-4 px-4 flex flex-col items-center">
         <div className="w-full aspect-square overflow-hidden rounded-md">
           <img
-            src={currentSong.img || PlayerImg}
+            src={currentSong?.thumbnail?.url}
             className="w-full h-full object-cover"
             alt=""
           />
         </div>
 
-        <p className="text-lg mt-2">{currentSong.title}</p>
-        <span className="text-sm text-gray-500">{currentSong.artist}</span>
+        <p className="text-lg mt-2">{currentSong?.title}</p>
+        <span className="text-sm text-gray-500">{currentSong?.singer}</span>
 
         {/* Track Progress */}
         <div className="w-full mt-4">
@@ -247,20 +254,20 @@ const Player = () => {
 
             {open && (
               <div className="space-y-3">
-                {songs.map((song, idx) => (
+                {nextSongs.map((song) => (
                   <div
-                    key={idx}
+                    key={song._id}
                     className={`flex items-center justify-between text-sm cursor-pointer hover:bg-blue-800/30 rounded-md p-1 transition ${
-                      idx === currentIndex ? "bg-blue-800/40" : ""
+                      song._id === selectedSong ? "bg-blue-800/40" : ""
                     }`}
                     onClick={() => {
-                      setCurrentIndex(idx);
+                      setSelectedSong(song._id);
                       setIsPlaying(true);
                     }}
                   >
                     <div className="flex items-center gap-3">
                       <img
-                        src={song.img}
+                        src={song.thumbnail.url}
                         alt=""
                         className="w-10 h-10 rounded-md object-cover"
                       />
@@ -269,13 +276,15 @@ const Player = () => {
                           {song.title}
                         </span>
                         <span className="text-[11px] text-gray-300">
-                          {song.artist}
+                          {song.singer}
                         </span>
                       </div>
                     </div>
                     {/* Show actual duration (dynamic) for playlist */}
                     <span className="text-xs text-gray-200">
-                      {idx === currentIndex ? formatTime(duration) : "--:--"}
+                      {song._id === selectedSong
+                        ? formatTime(duration)
+                        : "--:--"}
                     </span>
                   </div>
                 ))}

@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import IconHeader from "./IconHeader";
 import { RxDashboard } from "react-icons/rx";
+import { SongData } from "../context/Song";
 import {
   FiGlobe,
   FiSearch,
@@ -21,8 +22,9 @@ const menuItems = [
 ];
 
 const UserSidebar = () => {
+  const { songs } = SongData();
   return (
-    <aside className="w-80 min-h-screen bg-[#0E1525] rounded-tr-[50px] rounded-br-[50px] pb-4">
+    <aside className="w-80 min-h-screen bg-[#0E1525] rounded-tr-[50px] rounded-br-[50px] pb-4 md:block hidden">
       <IconHeader />
 
       <div className="w-64 text-white p-4">
