@@ -4,14 +4,14 @@ import { RiPlayFill } from "react-icons/ri";
 const RecentPlays = ({ title, singer, image, onPlay, isSelected }) => {
   return (
     <div
-      className="w-28 md:w-48 flex-shrink-0 cursor-pointer group"
+      className="w-28 md:w-48 flex-shrink-0 cursor-pointer group p-2"
       onClick={onPlay}
     >
       <div
         className={`relative md:w-48 md:h-48 h-28 w-28 rounded-lg overflow-hidden 
           ${
             isSelected
-              ? "border-2 border-blue-500 shadow-xl shadow-blue-500/50"
+              ? "border-2 border-blue-500 shadow-[0_0_8px_1px_#3b82f6]"
               : ""
           }`}
       >
@@ -23,9 +23,10 @@ const RecentPlays = ({ title, singer, image, onPlay, isSelected }) => {
           </button>
         </div>
       </div>
-
-      <p className="md:text-base mt-2 truncate">{title}</p>
-      <span className="text-blue-500 text-xs truncate">{singer}</span>
+      <div className="leading-none">
+        <p className="md:text-base mt-2 leading-none">{title}</p>
+        <span className="text-blue-500 text-xs leading-none">{singer}</span>
+      </div>
     </div>
   );
 };
