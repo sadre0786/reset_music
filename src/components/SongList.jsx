@@ -40,11 +40,11 @@ const SongList = ({
       </div>
 
       {isSelected ? (
-        <div class="equalizer">
-          <span class="equalizer-bar"></span>
-          <span class="equalizer-bar"></span>
-          <span class="equalizer-bar"></span>
-          <span class="equalizer-bar"></span>
+        <div className="equalizer">
+          <span className="equalizer-bar"></span>
+          <span className="equalizer-bar"></span>
+          <span className="equalizer-bar"></span>
+          <span className="equalizer-bar"></span>
         </div>
       ) : (
         <div> </div>
