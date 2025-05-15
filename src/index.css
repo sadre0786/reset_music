@@ -366,3 +366,91 @@ input[type="range"].neon-range::-moz-range-thumb {
     height: 100%;
   }
 }
+.modern-player-range {
+  width: 100%;
+  height: 6px;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+}
+
+/* Progress track: dynamic gradient */
+.modern-player-range::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 4px;
+  background: linear-gradient(
+    to right,
+    #3b82f6 0%,
+    #3b82f6 var(--seek-percent),
+    #333 var(--seek-percent),
+    #333 100%
+  );
+}
+.modern-player-range::-moz-range-track {
+  height: 6px;
+  border-radius: 4px;
+  background: #333;
+}
+.modern-player-range::-moz-range-progress {
+  height: 6px;
+  background: #3b82f6;
+  border-radius: 4px;
+}
+
+/* Thumb styling */
+.modern-player-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #3b82f6, #1e40af);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
+  margin-top: -6px;
+  position: relative;
+  z-index: 20;
+  transition: transform 0.2s ease;
+}
+.modern-player-range::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.modern-player-range::-moz-range-thumb {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #3b82f6, #1e40af);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
+  border: none;
+  transition: transform 0.2s ease;
+}
+.modern-player-range::-moz-range-thumb:hover {
+  transform: scale(1.2);
+}
+
+.play-pause-button-mobile {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(131.43deg, #0a0a23 10.34%, #0d1b3f 70%);
+  color: white;
+  font-weight: 400;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.play-pause-wrapper-mobile {
+  display: inline-block;
+  padding: 1px;
+  border-radius: 50%;
+  background: linear-gradient(
+    131.43deg,
+    #ffffff 10.34%,
+    #88b2ef 20.21%,
+    #88b2ef 72.19%,
+    #033caa 94.16%
+  );
+}
