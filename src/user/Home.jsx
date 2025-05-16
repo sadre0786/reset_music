@@ -5,6 +5,7 @@ import RecentPlays from "../components/RecentPlays";
 import AlbumCard from "../components/AlbumCard";
 import { SongData } from "../context/Song";
 import SongList from "../components/SongList";
+import { UserData } from "../context/User";
 
 const Home = () => {
   const { songs, setSelectedSong, selectedSong, setIsPlaying } = SongData();

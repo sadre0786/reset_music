@@ -1,11 +1,14 @@
 import React from "react";
 import { FiChevronDown } from "react-icons/fi";
+import { UserData } from "../context/User";
 
 const UserHeader = () => {
+  const { user } = UserData();
   return (
     <div className="w-full flex justify-between items-centerS px-4 py-4">
       <h1 className="md:text-3xl text-xl">
-        good morning, <span className="text-blue-700">paul</span>
+        good morning,{" "}
+        <span className="text-blue-700">{user ? user.name : "Guest"}</span>
       </h1>
 
       <div className="flex items-center cursor-pointer">
@@ -15,7 +18,9 @@ const UserHeader = () => {
           className="md:w-8 md:h-8 w-6 h-6 rounded-full object-cover"
         />
 
-        <p className="md:ml-3 ml-2 md:text-sm text-sm">Paul Manual</p>
+        <p className="md:ml-3 ml-2 md:text-sm text-sm">
+          {user ? user.name : "Guest"}
+        </p>
         <FiChevronDown className="md:text-sm text-xs md:ml-3 ml-2 text-gray-500" />
       </div>
     </div>
