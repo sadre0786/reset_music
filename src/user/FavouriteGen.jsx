@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { IoMdCheckmark } from "react-icons/io";
 import IconHeader from "../components/IconHeader";
+import { FiSearch } from "react-icons/fi";
 
 const tags = [
   {
@@ -71,12 +72,13 @@ const FavouriteGen = () => {
       </h1>
 
       <div className="w-full flex flex-col items-center px-8">
-        <div className="flex items-center w-full max-w-3xl mx-auto mt-8 p-[2px] rounded-2xl searchbar-container shadow-inner shadow-[#7B7B7B47]">
-          <div className="flex-grow rounded-l-2xl">
+        <div className="flex items-center w-full max-w-3xl mx-auto mt-8 p-[2px] rounded-2xl searchbar-container shadow-inner shadow-[#7B7B7B47] bg-gray-700">
+          <div className="flex items-center flex-grow rounded-l-2xl bg-gray-700">
+            <FiSearch className="text-white mx-3" size={20} />
             <input
               type="text"
               placeholder="Type here..."
-              className="w-full bg-transparent text-white placeholder-gray-400 py-2 px-4 outline-none"
+              className="w-full bg-transparent text-white placeholder-gray-400 py-2 pr-4 outline-none"
             />
           </div>
 
@@ -117,8 +119,8 @@ const FavouriteGen = () => {
       </div>
 
       <div className="button-wrapper my-9 shadow-sm shadow-black">
-            <button className="custom-button">Continue</button>
-          </div>
+        <button className="custom-button">Continue</button>
+      </div>
     </section>
   );
 };

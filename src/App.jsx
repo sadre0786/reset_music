@@ -8,13 +8,14 @@ import Library from "./user/Library";
 import CreatePlayList from "./user/CreatePlayList";
 import LikedSong from "./user/LikedSong";
 import { UserData } from "./context/User";
+import Loader from "./components/Loader";
 
 function App() {
   const { loading, isAuth } = UserData();
   return (
     <>
       {loading ? (
-        <div>Loading...</div>
+        <Loader />
       ) : (
         <BrowserRouter>
           <Routes>

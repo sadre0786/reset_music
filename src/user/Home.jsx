@@ -35,7 +35,6 @@ const Home = () => {
     <UserLayout>
       <UserHeader />
       <div className="text-white px-4 py-2 flex flex-col gap-4">
-        {/* Recent Played */}
         <div className="w-full flex justify-between items-center">
           <h2 className="md:text-xl text-lg font-semibold">recent played</h2>
           <LuSquareChevronRight
