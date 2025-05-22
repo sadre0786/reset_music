@@ -3,10 +3,10 @@ import UserSidebar from "./UserSidebar";
 
 const UserLayout = ({ children }) => {
   return (
-    <div className="h-full bg-image">
+    <div className="h-full bg-image sm:pb-0 pb-36">
       <div className="flex">
         <UserSidebar />
-        <div className="w-full  overflow-auto text-white">{children}</div>
+        <div className="w-full  overflow-auto h-dvh text-white">{children}</div>
       </div>
     </div>
   );

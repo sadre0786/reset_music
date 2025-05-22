@@ -1,7 +1,14 @@
 import React from "react";
 import { RiPlayFill } from "react-icons/ri";
 
-const RecentPlays = ({ title, singer, image, onPlay, isSelected }) => {
+const RecentPlays = ({
+  title,
+  singer,
+  image,
+  price = 60,
+  onPlay,
+  isSelected,
+}) => {
   return (
     <div
       className="w-28 md:w-48 flex-shrink-0 cursor-pointer group p-2"
@@ -23,9 +30,15 @@ const RecentPlays = ({ title, singer, image, onPlay, isSelected }) => {
           </button>
         </div>
       </div>
-      <div className="leading-none">
-        <p className="md:text-base mt-2 leading-none">{title}</p>
-        <span className="text-blue-500 text-xs leading-none">{singer}</span>
+
+      <div className="flex justify-between sm:items-center mt-2 sm:flex-row flex-col">
+        <div className="leading-none">
+          <p className="md:text-base text-sm font-medium">{title}</p>
+          <span className="text-blue-500 text-xs">{singer}</span>
+        </div>
+        {price && (
+          <p className="text-blue-500 text-xs font-semibold">${price}</p>
+        )}
       </div>
     </div>
   );
