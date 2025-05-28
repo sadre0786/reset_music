@@ -30,7 +30,7 @@ const Search = () => {
         </div>
       </div>
 
-      <div className="flex gap-4 flex-wrap md:px-4 md:py-2 p-1">
+      <div className="flex gap-4 flex-wrap mt-10 mr-4 justify-center">
         {songs.map((song) => (
           <RecentPlays
             key={song._id}
